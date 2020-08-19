@@ -1,0 +1,80 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+<br />
+<div class="card p-4 text-white" style="background-color:#ff5722">
+    <h3>Register a Account</h3><hr class="bg-white" />
+
+    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+        <div class="row">
+            <div class="col-6">
+                <!--Name-->
+                <div class="form-group">
+                    <label asp-for="Input.Name"></label>
+                    <input asp-for="Input.Name" class="form-control" />
+                    <span asp-validation-for="Input.Name" class="text-white"></span>
+                </div>
+            </div>
+            <div class="col-6">
+                <!--mail-->
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-white"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <!--pass-->
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-white"></span>
+                </div>
+            </div>
+            <div class="col-6">
+                <!--conf-->
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-white"></span>
+                </div>
+            </div>
+        </div>
+
+
+        @if (User.IsInRole(NoteMaker.utility.SD.Admin))
+        {
+            <br />
+            <div class="row">
+                <div class="col-12 text-center">
+                    <b>Create this account as </b> &nbsp;
+                    <input type="radio" name="UserRole" value="@NoteMaker.utility.SD.Admin" />@NoteMaker.utility.SD.Admin
+                </div>
+            </div>
+            <br />
+        }
+
+
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

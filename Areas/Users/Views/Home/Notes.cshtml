@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Notes>
+
+@{
+    ViewData["Title"] = "Notes";
+}
+
+<div class="bg-white container p-5 mb-5">
+    <div class="row">
+        <div class="col-5">
+            <h3>Welcome @User.Identity.Name</h3>
+        </div>
+        <div class="col-7">
+            <a asp-action="Add" asp-controller="Home" class="btn btn-info float-right"><i class="fa fa-plus"></i>&nbsp; Add Notes</a>
+        </div>
+    </div>
+    <hr />
+    @if (Model.Count() > 0)
+    {
+        <form>
+            <div class="search">
+                <input value="@ViewData["GetResult"]" name="search" type="text" class="SearchTerm" placeholder="Search Your Notes......." />
+                <button type="search" value="search" class="SearchButton">
+                    <i class="fa fa-search text-white"></i>
+                </button>
+            </div>
+        </form>
+        <br />
+
+
+        <div class="row">
+            @foreach(var note in Model){
+            <div class="col-sm-3">
+                <div class="card bg-info mt-2" >
+                    <div class="card-header text-white" style="height:90px;">
+                        @note.Title
+                    </div>
+                    <div class="card-footer text-center" style="letter-spacing:5px;height:40px;">
+                        <a asp-action="View" asp-route-id="@note.Id"><i class="fa fa-list fa-lg text-white"></i></a>
+                        <a asp-action="Edit" asp-route-id="@note.Id"><i class="fa fa-edit fa-lg text-white"></i></a>
+                        <a asp-action="Delete" asp-route-id="@note.Id"><i class="fa fa-trash fa-lg text-white"></i></a>
+                    </div>
+                </div>
+            </div>
+            }
+
+        </div>
+
+    }
+    else
+    {
+        <h4>Ooppss! no notes found, shall we create one? <a asp-action="Add">Add notes</a></h4>
+    }
+</div>
+
+

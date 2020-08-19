@@ -1,0 +1,37 @@
+﻿@model NoteMaker.Models.Notes
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="container bg-white p-4" style="height:500px;">
+   
+    <a asp-action="Notes" class="text-info"><i class="fas fa-arrow-circle-left"></i> go back</a>
+ 
+   <hr class="bg-secondary" />
+    <h4>Add Your Notes</h4><br /><br />
+    <form method="post">
+        <input type="hidden" asp-for="@Model.UserId" />
+        <div class="form-group row">
+            <div class="col-2">
+                <h5 class="float-right"><label asp-for="Title"></label> :</h5>
+            </div>
+            <div class="col-9">
+                <input asp-for="Title" class="form-control float-left" maxlength="30" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <h5 class="float-right"><label asp-for="Note"></label> :</h5>
+            </div>
+            <div class="col-9">
+                <textarea asp-for="Note" class="form-control float-left" rows="8" cols="8"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2"></div>
+            <div class="col-9 text-center">
+                <button class="btn btn-info form-control">Save Notes</button>
+            </div>
+        </div>
+    </form>
+</div>

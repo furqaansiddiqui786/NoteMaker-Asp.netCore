@@ -1,0 +1,33 @@
+﻿@model NoteMaker.Models.Notes
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="container bg-white p-4" style="height:500px;">
+
+    <a asp-action="Notes" class="text-info"><i class="fas fa-arrow-circle-left"></i> go back</a>
+
+    <hr class="bg-secondary" />
+    <h3>Your Notes</h3><br /><br />
+
+
+    <div class="jumbotron p-4 text-white" style="background-color:#ff5722">
+        <form method="post" class="p-2">
+
+            <input type="hidden" asp-for="@Model.UserId" />
+            <div class="form-group row">
+                <h4>@Model.Title</h4>
+            </div><hr />
+            <div class="form-group row">
+                <blockquote>
+                    <h6>@Model.Note</h6>
+                </blockquote>
+               
+            </div>
+
+        </form>
+    </div>
+
+
+</div>
+

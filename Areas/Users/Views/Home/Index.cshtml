@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div style="margin-top:10%">
+        <div class="jumbotron text-white" style="background-color:#ff5722">
+
+            <h3>Welcome @User.Identity.Name lets start making some notes shall we?</h3>
+            <p>Notes you add are safe and can be accessed whenever and whereever you want</p>
+            <p>Easy to manage and access. go to notes page to view and add your notes</p>
+            <a asp-action="Notes" asp-controller="Home" asp-area="Users" class="btn btn-info">Notes</a>
+        </div>
+    </div>
+    
+}
+else
+{
+    <div style="margin-top:10%">
+        <div class="jumbotron text-white" style="background-color:#ff5722">
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <h3>Simple Note Maker</h3><hr />
+                    <h6>A Simple Note Making app where users can login and save notes in their accounts, and can login to access their notes, users can edit view or delete the notes created.</h6>
+                    <br />
+                    <a asp-action="Register" asp-controller="Account" asp-area="Identity" class="btn btn-info">Register</a>
+                    <a asp-action="Login" asp-controller="Account" asp-area="Identity" class="btn btn-info">Login</a>
+
+                </div>
+
+                <div class="col-lg-6">
+                    <center class="mt-4">
+                        <img srcset="~/images/logo.png" width="100" height="100" /><br />
+                        <h3 class="text-white">Note Maker</h3>
+                    </center>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+}
+
